@@ -127,14 +127,14 @@ Fold 5: [TRAIN] [TRAIN] [TRAIN] [TRAIN] [TEST] → accuracy: 84%
 W projekcie pokazujemy przykład **przepasowanego modelu:**
 
 **Model bez ograniczeń (Decision Tree, max_depth=None):**
-- Training Accuracy: **~95-100%**
-- Cross-Validation: **~75-80%**
-- **Różnica: 15-25%** 🚨 OVERFITTING!
+- Training Accuracy: **99.75%**
+- Cross-Validation: **72.40%**
+- **Różnica: 27.35%** 🚨 OVERFITTING!
 
-**Dobry model:**
-- Training Accuracy: **85%**
-- Cross-Validation: **84%**
-- **Różnica: 1%** ✅ Stabilny!
+**Dobry model (Gradient Boosting):**
+- Training Accuracy: **~80%**
+- Cross-Validation: **79.93%**
+- **Różnica: <1%** ✅ Stabilny!
 
 ### Praktyczne zasady:
 
@@ -151,30 +151,30 @@ W projekcie pokazujemy przykład **przepasowanego modelu:**
 
 ### Najlepsze modele (sortowane po AUC):
 
-Przykładowe wyniki (zależą od konkretnego uruchomienia):
+Rzeczywiste wyniki z wykonania notebooka:
 
 | Model | Accuracy | AUC | Recall | Precision | F1 | TT (Sec) |
-|-------|----------|-----|--------|-----------|----|----|
-| Gradient Boosting | 0.80 | 0.85 | 0.55 | 0.65 | 0.59 | 2.5 |
-| Random Forest | 0.79 | 0.84 | 0.50 | 0.67 | 0.57 | 1.8 |
-| LightGBM | 0.80 | 0.84 | 0.53 | 0.66 | 0.59 | 0.3 |
-| XGBoost | 0.80 | 0.84 | 0.52 | 0.66 | 0.58 | 1.2 |
+|-------|----------|-----|--------|-----------|----|----|  
+| **Gradient Boosting** | **0.7993** | **0.8463** | **0.7993** | **0.7903** | **0.7924** | **0.41** |
+| Logistic Regression | 0.8039 | 0.8457 | 0.8039 | 0.7967 | 0.7985 | 1.40 |
+| Ada Boost | 0.8019 | 0.8441 | 0.8019 | 0.7936 | 0.7953 | 0.25 |
+| Ridge Classifier | 0.8003 | 0.8373 | 0.8003 | 0.7908 | 0.7921 | 0.14 |
+| LightGBM | 0.7900 | 0.8359 | 0.7900 | 0.7811 | 0.7837 | 0.30 |
+| Random Forest | 0.7913 | 0.8248 | 0.7913 | 0.7802 | 0.7823 | 0.26 |
 
 **Metryki:**
-- **Accuracy:** ~80% (wynik ogólny)
-- **AUC:** ~0.84-0.85 (bardzo dobry - idealny = 1.0)
-- **Recall:** ~50-55% (wykrywamy połowę klientów, którzy odejdą)
-- **Precision:** ~65-67% (2/3 naszych alertów jest prawidłowych)
-
-### Interpretacja biznesowa:
+- **Accuracy:** ~79.93% (wynik ogólny)
+- **AUC:** ~0.8463 (bardzo dobry - idealny = 1.0)
+- **Recall:** ~79.93% (wykrywamy prawie 80% klientów, którzy odejdą)
+- **Precision:** ~79.03% (prawie 80% naszych alertów jest prawidłowych)
 
 **Na 100 klientów, którzy faktycznie odejdą:**
-- ✅ Wykryjemy: **~55 klientów** (Recall = 55%)
-- ❌ Przegapimy: **~45 klientów**
+- ✅ Wykryjemy: **~80 klientów** (Recall = 79.93%)
+- ❌ Przegapimy: **~20 klientów**
 
 **Na 100 alertów "klient odejdzie":**
-- ✅ Prawidłowe alarmy: **~65-67** (Precision)
-- ❌ Fałszywe alarmy: **~33-35**
+- ✅ Prawidłowe alarmy: **~79** (Precision = 79.03%)
+- ❌ Fałszywe alarmy: **~21**
 
 **Czy to dobre?**
 TAK! Bo:
@@ -249,11 +249,13 @@ new_customer = pd.DataFrame({
 prediction = predict_model(loaded_model, data=new_customer)
 churn_prob = prediction['prediction_score'].values[0]
 
+# Przykład z notebooka: churn_prob = 0.689 (68.9%)
+
 if churn_prob > 0.7:
     # WYSOKI RISK - natychmiastowa akcja!
     trigger_retention_campaign(customer_id)
 elif churn_prob > 0.5:
-    # ŚREDNIE RYZYKO - monitoring
+    # ŚREDNIE RYZYKO - monitoring (jak w naszym przykładzie: 68.9%)
     add_to_watchlist(customer_id)
 ```
 
@@ -270,22 +272,23 @@ elif churn_prob > 0.5:
 
 **Porównanie:**
 
-**Model A (Overfitted):**
-- Training: 99%
-- CV: 75%
-- Test: 70%
-- **Problem:** Niestabilny, w produkcji może spaść do 65%
+**Model A (Overfitted - Decision Tree bez ograniczeń):**
+- Training: 99.75%
+- CV: 72.40%
+- Test: NIE WDRAŻAMY (zbyt duża różnica!)
+- **Problem:** Niestabilny, różnica 27.35% wskazuje na poważny overfitting
 
-**Model B (Stabilny):**
-- Training: 85%
-- CV: 84%
-- Test: 83%
-- **Zaleta:** Przewidywalny, w produkcji będzie ~83%
+**Model B (Stabilny - Gradient Boosting):**
+- Training: ~80%
+- CV: 79.93%
+- Test: 79.91%
+- **Zaleta:** Przewidywalny, stabilne wyniki ~80%
 
 **Dla biznesu:**
-- Lepiej mieć **pewne 83%** niż **niepewne 75-99%**
+- Lepiej mieć **pewne 79.93%** niż **niepewne 72-99%**
 - Planowanie budżetu retention wymaga stabilności
 - Model stabilny = łatwiejszy do monitorowania i utrzymania
+- Nasz model: CV = 79.93%, Test = 79.91% → doskonała zgodność!
 
 ### 2. Cross-Validation to klucz do uniknięcia overfittingu
 
@@ -308,10 +311,10 @@ elif churn_prob > 0.5:
 - ✅ Prostsze w utrzymaniu
 - ✅ Niższe wymagania sprzętowe
 
-**Przykład:**
-- Logistic Regression (prostszy): 82% accuracy, 0.5s treningu, pełna interpretowalność
-- Deep Neural Network (złożony): 84% accuracy, 60s treningu, "czarna skrzynka"
-- **Różnica 2% vs koszty i ryzyko** - często prosty wygrywa!
+**Przykład z naszego projektu:**
+- Logistic Regression (prostszy): 80.39% accuracy, 1.4s treningu, pełna interpretowalność
+- Gradient Boosting (złożony): 79.93% accuracy, 0.41s treningu, mniejsza interpretowalność
+- **Różnica 0.46% vs interpretowalność** - oba modele są dobre!
 
 ### 4. Interpretacja modelu = wartość dla biznesu
 
