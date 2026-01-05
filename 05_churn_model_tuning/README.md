@@ -245,7 +245,8 @@ Tuning (optymalizacja hiperparametrów) to proces szukania **najlepszych ustawie
 
 1. **Grid Search** - testuje wszystkie kombinacje (wolne)
 2. **Random Search** - losowe kombinacje (szybsze)
-3. **Optuna** - inteligentne przeszukiwanie (użyte w tym projekcie)
+3. **Optuna** - inteligentne przeszukiwanie
+4. **scikit-optimize** - domyślne (użyte w tym projekcie) 
 
 ### Metryki wyjaśnione
 
