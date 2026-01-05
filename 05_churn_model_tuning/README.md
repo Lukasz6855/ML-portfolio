@@ -40,7 +40,7 @@ Ten projekt przeprowadza **rzetelną analizę techniczno-biznesową** na rzeczyw
 ### Metodologia
 
 1. **Model bazowy** - Gradient Boosting z domyślnymi ustawieniami
-2. **Model po tuningu** - 20 iteracji optymalizacji z Optuna
+2. **Model po tuningu** - 20 iteracji optymalizacji
 3. **Porównanie metryk** - Accuracy, AUC, Recall, Precision
 4. **Analiza biznesowa** - Obliczenie ROI i zysku/straty
 
