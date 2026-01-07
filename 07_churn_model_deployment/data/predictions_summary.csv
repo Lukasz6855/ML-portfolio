@@ -1,0 +1,21 @@
+customerID,tenure,MonthlyCharges,Contract,prediction_score,prediction_label,explanation,risk_level,recommended_action
+0811-GSDTP,13,30.15,Month-to-month,0.6416,No,Model przewiduje: No (pewność: 64.16%),🟢 LOW RISK,Monitoring - brak pilnych działań
+1970-KKFWL,35,23.3,Two year,0.9845,No,Model przewiduje: No (pewność: 98.45%),🟢 LOW RISK,Monitoring - brak pilnych działań
+2892-GESUL,18,19.35,Two year,0.9797,No,Model przewiduje: No (pewność: 97.97%),🟢 LOW RISK,Monitoring - brak pilnych działań
+2842-BCQGE,43,75.35,Month-to-month,0.6829,No,Model przewiduje: No (pewność: 68.29%),🟢 LOW RISK,Monitoring - brak pilnych działań
+4807-IZYOZ,51,20.65,Two year,0.9949,No,Model przewiduje: No (pewność: 99.49%),🟢 LOW RISK,Monitoring - brak pilnych działań
+9451-WLYRI,53,19.05,One year,0.9921,No,Model przewiduje: No (pewność: 99.21%),🟢 LOW RISK,Monitoring - brak pilnych działań
+1767-TGTKO,8,45.45,Month-to-month,0.6182,No,Model przewiduje: No (pewność: 61.82%),🟢 LOW RISK,Monitoring - brak pilnych działań
+8033-VCZGH,50,103.95,One year,0.7288,No,Model przewiduje: No (pewność: 72.88%),🟢 LOW RISK,Monitoring - brak pilnych działań
+6689-VRRTK,44,109.8,One year,0.7213,No,Model przewiduje: No (pewność: 72.13%),🟢 LOW RISK,Monitoring - brak pilnych działań
+6997-UVGOX,71,85.45,Two year,0.9931,No,Model przewiduje: No (pewność: 99.31%),🟢 LOW RISK,Monitoring - brak pilnych działań
+1602-IJQQE,4,75.35,Month-to-month,0.6575,Yes,Model przewiduje: Yes (pewność: 65.75%),🟡 MEDIUM RISK,Kontakt telefoniczny + analiza przyczyn niezadowolenia
+6976-BWGLQ,72,25.2,Two year,0.9981,No,Model przewiduje: No (pewność: 99.81%),🟢 LOW RISK,Monitoring - brak pilnych działań
+8066-POXGX,13,35.1,Month-to-month,0.5896,Yes,Model przewiduje: Yes (pewność: 58.96%),🟡 MEDIUM RISK,Kontakt telefoniczny + analiza przyczyn niezadowolenia
+5862-BRIXZ,46,60.75,Two year,0.9629,No,Model przewiduje: No (pewność: 96.29%),🟢 LOW RISK,Monitoring - brak pilnych działań
+5317-FLPJF,66,61.35,Two year,0.9823,No,Model przewiduje: No (pewność: 98.23%),🟢 LOW RISK,Monitoring - brak pilnych działań
+4193-IBKSW,72,24.75,Two year,0.9981,No,Model przewiduje: No (pewność: 99.81%),🟢 LOW RISK,Monitoring - brak pilnych działań
+8680-CGLTP,29,58.75,One year,0.9396,No,Model przewiduje: No (pewność: 93.96%),🟢 LOW RISK,Monitoring - brak pilnych działań
+0616-ATFGB,1,25.05,Month-to-month,0.6292,Yes,Model przewiduje: Yes (pewność: 62.92%),🟡 MEDIUM RISK,Kontakt telefoniczny + analiza przyczyn niezadowolenia
+0426-TIRNE,1,20.9,Month-to-month,0.7937,No,Model przewiduje: No (pewność: 79.37%),🟢 LOW RISK,Monitoring - brak pilnych działań
+5549-ZGHFB,50,24.95,Two year,0.9948,No,Model przewiduje: No (pewność: 99.48%),🟢 LOW RISK,Monitoring - brak pilnych działań
