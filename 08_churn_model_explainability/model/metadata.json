@@ -1,0 +1,7 @@
+{
+  "threshold": 0.5,
+  "optimized_for": "recall",
+  "business_reason": "false negatives are costly",
+  "model_type": "LogisticRegression",
+  "train_date": "2026-01-07 20:26:39"
+}
